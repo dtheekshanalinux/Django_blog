@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+{% load crispy_forms_tags %}
+            <div id="heading">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-content">
+                                <h2>blog</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="product-post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-section">
+                                <h2>{{ post.title_type }}</h2>
+                                <img src="{% static 'website/images/under-heading.png' %}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div id="single-blog" class="page-section first-section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="product-item col-md-12">
+                                    <div class="row" id="aligns">
+                                        <div class="col-md-8">  
+                                                <div class="image">
+                                                    <div class="image-post">
+                                                        <img src="{{post.image.url}}" alt=""  width="770" height="480">
+                                                    </div>
+                                                </div>
+                                             <div class="product-content">
+                                                    <div class="product-title">
+                                                        <h3>{{post.title}}</h3>
+                                                       <span class="subtitle">
+                                                            {% with comments.count as total_comments %}
+                                                            {{ total_comments }} comments</h2>
+                                                            <p>
+                                                              {% endwith %}
+                                                            </p>
+                                                        </span>
+
+                                                    </div>
+                                                    <p>{{post.content|safe}}</p>
+                                                </div>
+                                                <div class="divide-line">
+                                                <img src="{% static 'website/images/div-line.png' %}" alt="" />
+                                                </div>
+                                                <div class="comments-title">
+                                                    <div class="comment-section">
+                                                        {% with comments.count as total_comments %}
+                                                        <h2>{{ total_comments }} comments</h2>
+                                                        <p>
+                                                          {% endwith %}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                {% for comment in comments %}
+                                                <div class="all-comments">
+                                                    <div class="view-comments">
+                                                        <div class="comments">
+                                                            <div class="author-thumb">
+                                                            </div>
+                                                            <div class="comment-body">
+                                                                <h6>{{ comment.name }}</h6>
+                                                                <span class="date">{{ comment.created_on }}</span> 
+                                                                {{ comment.body | linebreaks }}
+                                                            </div>
+                                                        </div>
+                                                        {% endfor %}
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="divide-line">
+                                                <img src="{% static 'website/images/div-line.png' %}" alt="" />
+                                                </div>
+                                                <div class="card-body">
+                                                    {% if new_comment %}
+                                                    <div class="alert alert-success" role="alert">
+                                                      Your comment is awaiting moderation
+                                                    </div>
+                                                    {% else %}
+                                            <div class="leave-comment">
+                                                <div class="leave-one">
+                                                    <h4>Leave a comment</h4>
+                                                </div>
+                                            </div>
+                                            <div class="leave-form">
+                                                <form method="post" class="leave-comment">
+                                                    {{ comment_form | crispy }}
+                                                    {% csrf_token %}                          
+                                                    <div class="send">
+                                                        <button type="submit">Send</button>
+                                                    </div>
+                                                </form>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+            </div>
+{% endblock content %}

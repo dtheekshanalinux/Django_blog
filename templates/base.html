@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!-- 
+
+Grill Template 
+
+http://www.templatemo.com/free-website-templates/417-grill
+
+-->
+    <head>
+        <meta charset="utf-8">
+        <title>Dinindu Theekshana</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        
+        <link rel="stylesheet" href="{% static 'website/css/bootstrap.css'%}">
+        <link rel="stylesheet" href="{% static 'website/css/font-awesome.css'%}">
+        <link rel="stylesheet" href="{% static 'website/css/templatemo_style.css'%}">
+        <link rel="stylesheet" href="{% static 'website/css/templatemo_misc.css'%}">
+        <link rel="stylesheet" href="{% static 'website/css/flexslider.css'%}">
+        <link rel="stylesheet" href="{% static 'website/css/testimonails-slider.css'%}">
+
+
+        <link rel="shortcut icon" href="{% static 'website/images/favicon.ico' %}" type="image/x-icon">
+
+        <script src="{% static 'website/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js' %}"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+        <![endif]-->
+
+            <header>
+
+                <div id="main-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="logo">
+                                    <a href="{% url 'home' %}"><img src="{% static 'website/images/logo_transparent1.png'%}" title="Grill Template" alt="Grill Website Template" width="80px" height="64px"></a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="main-menu">
+                                    <ul>
+                                        <li><a href="{% url 'home' %}">Home</a></li>
+                                        <li><a href="{% url 'about-us' %}">About us</a></li>
+                                        <li><a href="{% url 'contact-us' %}">Contact</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="search-box">  
+                                    <form name="search_form" method="get" class="search_form">
+                                        <input id="search" type="text" />
+                                        <input type="submit" id="search-button" />
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>           
+
+
+                    {% block content %}
+                    
+                    {% endblock content%}
+
+
+			<footer>
+                <div class="container">
+                    <div class="top-footer">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="subscribe-form">
+                                    <span>Get in touch with us</span>
+                                    <form method="get" class="subscribeForm">
+                                        <input id="subscribe" type="text" />
+                                        <input type="submit" id="submitButton" />
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="social-bottom">
+                                    <span>Follow us:</span>
+                                    <ul>
+                                        <li><a href="https://github.com/dtheekshanalinux" class="fa fa-github"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-footer">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="about">
+                                    <h4 class="footer-title">About</h4>
+                                    <p>"Welcome to my website, your number one source for all things about programming. We're dedicated to providing you the best of knowledge, with a focus on dependability. customer service</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="shop-list">
+                                    <h4 class="footer-title">blog Categories</h4>
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>python</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>django</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>html</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>css</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>javascript</a></li>
+                                        <li><a href="#"><i class="fa fa-angle-right"></i>react</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="recent-posts">
+                                    <h4 class="footer-title">Recent posts</h4>
+                                    <div class="recent-post">
+                                        <div class="recent-post-thumb">
+                                            <img src="{% static 'website/images/slider/slider1.jpg' %}"  width="70px" height="70px">
+                                        </div>
+                                        <div class="recent-post-info">
+                                            <h6><a href="#">Master python fastly</a></h6>
+                                            <span>24/3/2021</span>
+                                        </div>
+                                    </div>
+                                    <div class="recent-post">
+                                        <div class="recent-post-thumb">
+                                            <img src="{% static 'website/images/slider/slider4.jpg' %}" width="70px" height="70px">
+                                        </div>
+                                        <div class="recent-post-info">
+                                            <h6><a href="#">what after python</a></h6>
+                                            <span>31/3/2021</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="more-info">
+                                    <h4 class="footer-title">More info</h4>
+                                    <p> We're dedicated to providing you the best of knowledge about programming</p>
+                                    <ul>
+                                        <li><i class="fa fa-github"></i><a href="https://github.com/dtheekshanalinux">github.com/dtheekshanalinux</a></li>
+                                        <li><i class="fa fa-envelope"></i><a href="mailto:dinindu.linux@gmail.com" target="_parent">dinindu.linux@gmail.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-footer">
+                        <p>
+                        	Copyright © Dinindu Theekshana
+                        </p>
+                    </div>
+                    
+                </div>
+            </footer>
+
+    
+        <script src="{% static 'website/js/vendor/jquery-1.11.0.min.js' %}"></script>
+        <script src="{% static 'website/js/vendor/jquery.gmap3.min.js' %}"></script>
+        <script src="{% static 'website/js/plugins.js' %}"></script>
+        <script src="{% static 'website/js/main.js' %}"></script>
+
+    </body>
+</html>
