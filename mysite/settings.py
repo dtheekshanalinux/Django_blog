@@ -19,7 +19,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 SECRET_KEY = '0x!b#(1*cd73w$&azzc6p+essg7v=g80ls#z&xcx*mpemx&@9$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'blog',
     'django_summernote',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,20 @@ SUMMERNOTE_THEME = 'bs4'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 django_heroku.settings(locals())
+
+
+
+
+
+#S3 BUCKETS CONFIG
+
+AWS_ACCESS_KEY_ID = 'AKIAQ6DIVDFSVK6ZLH2K'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'dtblog'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_S3_REGION_NAME = "us-east-2" 
+AWS_S3_SIGNATURE_VERSION = "s3v4"
