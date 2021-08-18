@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="{% static 'website/css/flexslider.css'%}">
         <link rel="stylesheet" href="{% static 'website/css/testimonails-slider.css'%}">
 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+
 
         <link rel="shortcut icon" href="{% static 'website/images/favicon.ico' %}" type="image/x-icon">
 
@@ -27,6 +30,32 @@
 
 
             <header>
+
+                <div id="top-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="home-account">
+                                    <a href="{% url 'home' %}">Home</a>
+                                    {% if user.is_authenticated %}
+                                        <a href="">  Hi {{ user.username }} !</a>
+                                  {% else %}
+                                    <a href="{% url 'register' %}">Sign up</a>
+                                {% endif %}
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="cart-info">
+                                    
+                                    {% if user.is_authenticted %}
+                                        logot
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div id="main-header">
                     <div class="container">
@@ -81,7 +110,7 @@
                                 <div class="social-bottom">
                                     <span>Follow us:</span>
                                     <ul>
-                                        <li><a href="https://github.com/dtheekshanalinux" class="fa fa-github"></a></li>
+                                        <li><a href="https://github.com/dtheekshanalinux" class="fab fa-github"></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -136,7 +165,7 @@
                                     <h4 class="footer-title">More info</h4>
                                     <p> We're dedicated to providing you the best of knowledge about programming</p>
                                     <ul>
-                                        <li><i class="fa fa-github"></i><a href="https://github.com/dtheekshanalinux">github.com/dtheekshanalinux</a></li>
+                                        <li><i class="fab fa-github"></i><a href="https://github.com/dtheekshanalinux">github.com/dtheekshanalinux</a></li>
                                         <li><i class="fa fa-envelope"></i><a href="mailto:dinindu.linux@gmail.com" target="_parent">dinindu.linux@gmail.com</a></li>
                                     </ul>
                                 </div>

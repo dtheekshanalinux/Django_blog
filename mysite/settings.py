@@ -19,9 +19,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["dtblogsite.herokuapp.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'storages',
+    'register.apps.RegisterConfig',
 ]
 
 MIDDLEWARE = [
@@ -115,9 +116,13 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+# add this to x frame else get error
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATICFILES_DIRS = [ os.path.join(BASE_DIR, 'static'), ]
 
@@ -125,11 +130,11 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SUMMERNOTE_THEME = 'bs4'
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-
 django_heroku.settings(locals())
 
 
+# redirected urls
+LOGIN_REDIRECT_URL = "/"
 
 
 
