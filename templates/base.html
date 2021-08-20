@@ -21,7 +21,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 
 
-
         <link rel="shortcut icon" href="{% static 'website/images/favicon.ico' %}" type="image/x-icon">
 
         <script src="{% static 'website/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js' %}"></script>
@@ -38,18 +37,16 @@
                                 <div class="home-account">
                                     <a href="{% url 'home' %}">Home</a>
                                     {% if user.is_authenticated %}
-                                        <a href="">  Hi {{ user.username }} !</a>
+                                        <a href="">  Hi {{ user.first_name }} !</a>
                                   {% else %}
                                     <a href="{% url 'register' %}">Sign up</a>
                                 {% endif %}
-                                    
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="cart-info">
-                                    
-                                    {% if user.is_authenticted %}
-                                        logot
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'logout' %}"> logout</a>
                                     {% endif %}
                                 </div>
                             </div>

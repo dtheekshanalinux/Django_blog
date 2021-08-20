@@ -6,14 +6,15 @@ from django.contrib.auth import login, authenticate, logout
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField()
-    First_name = forms.CharField()
-    Last_name = forms.CharField()
+    first_name = forms.CharField()
+    last_name = forms.CharField()
 
     class Meta:
         model = User
-        fields = ["First_name", "Last_name","username", "email", "password1", "password2"]
+        fields = ["first_name", "last_name","username", "email", "password1", "password2"]  
 
-    
+    def __init__(self, *args, **kwargs):
+		    super(RegisterForm, self).__init__(*args, **kwargs)
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

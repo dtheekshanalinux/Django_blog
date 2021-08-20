@@ -3,7 +3,26 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% block body %}
+<style>
+  .logout{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .link a{
+    padding-right: 20%;
+  }
+  @media screen and (max-width: 600px) {
+    .link a{
+      padding-right: 70%;
+     }  
+
+   }
+
+</style>
+  <div class="logout">
     <h2>You have been logged out</h2>
-      <a href="{% url 'login' %}">Log In Again</a>
+    <div class="link"><a href="{% url 'login' %}">Log In Again</a></div>
+  </div>
 {% endblock body %}
 {% endblock content %}
