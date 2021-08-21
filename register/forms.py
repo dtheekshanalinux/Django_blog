@@ -13,9 +13,6 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ["first_name", "last_name","username", "email", "password1", "password2"]  
 
-    def __init__(self, *args, **kwargs):
-		    super(RegisterForm, self).__init__(*args, **kwargs)
-
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email__iexact=email).exists():
