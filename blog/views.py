@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django.views import generic
+from django.views.generic import ListView, CreateView
 
 
 class PostList(generic.ListView):
@@ -44,4 +45,10 @@ def aboutus(request):
 
 def contactus(request):
     return render(request,'contact-us.html')
+
+
+class AddPostView(CreateView):
+	model = Post
+	form_class = PostForm
+	template_name = 'add_post.html'
 

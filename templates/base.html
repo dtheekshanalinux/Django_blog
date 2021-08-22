@@ -38,8 +38,10 @@
                                     <a href="{% url 'home' %}">Home</a>
                                     {% if user.is_authenticated %}
                                         <a href="">  Hi {{ user.first_name }} !</a>
+                                        <a href="{% url 'add_post' %}"> Add blog post</a>
                                   {% else %}
                                     <a href="{% url 'register' %}">Sign up</a>
+                                    <a href="{% url 'login' %}">Sign in</a>
                                 {% endif %}
                                 </div>
                             </div>
