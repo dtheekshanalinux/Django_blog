@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_summernote.fields import SummernoteTextField
 from django.urls import reverse
-
+from django.template.defaultfilters import slugify
 
 STATUS = (
     (0,"Draft"),
@@ -10,8 +10,7 @@ STATUS = (
 )
  
 class Post(models.Model):
-    title = models.CharField(max_length=200, unique=True)
-    title_type = models.CharField(max_length=50, unique=True)
+    title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
     updated_on = models.DateTimeField(auto_now= True)
@@ -19,7 +18,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     image = models.ImageField(upload_to='images',null=True, blank=True)
-
+    category = models.CharField(max_length=50, default='uncatagories')
 
     class Meta:
         ordering = ['-created_on']
@@ -27,8 +26,14 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
+
     def get_absolute_url(self):
         return reverse('home')
+
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
@@ -43,3 +48,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return "Comment {} by {}".format(self.body, self.name)
+
+
+class category(models.Model):
+    name = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.name
+
+    
