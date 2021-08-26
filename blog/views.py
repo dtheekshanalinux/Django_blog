@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
-from .forms import CommentForm, PostForm
+from .forms import CommentForm, PostForm, EditForm
 from django.views import generic
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy, reverse
 
 
 class PostList(generic.ListView):
@@ -52,3 +53,12 @@ class AddPostView(CreateView):
 	form_class = PostForm
 	template_name = 'add_post.html'
 
+class UpdatePostView(UpdateView):
+	model = Post
+	form_class = EditForm
+	template_name = 'update_post.html'
+
+class DeletePostView(DeleteView):
+	model = Post
+	template_name = 'delete_post.html'
+	success_url = reverse_lazy('home')

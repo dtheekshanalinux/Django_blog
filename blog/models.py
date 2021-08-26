@@ -21,7 +21,7 @@ class Post(models.Model):
     category = models.CharField(max_length=50, default='uncatagories')
 
     class Meta:
-        ordering = ['-created_on']
+        ordering = ['-created_on'] # this is used to order blog posts using time
 
     def __str__(self):
         return self.title
@@ -31,6 +31,7 @@ class Post(models.Model):
         super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
+        
         return reverse('home')
 
 

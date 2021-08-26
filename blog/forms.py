@@ -19,3 +19,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'category','author', 'content', 'image','status')
+
+class EditForm(forms.ModelForm):
+    category = forms.ChoiceField(choices = choice_list)
+    class Meta:
+        model = Post
+        fields = ('title', 'category', 'content', 'image','status')
