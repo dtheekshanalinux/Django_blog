@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+{% if category_posts %}
+
+<div id="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-section">
+                    <h2>{{ cats }}</h2>
+                    <img src="{% static 'website/images/under-heading.png' %}" alt="" >
+                </div>
+            </div>
+        </div><br>
+        <div class="row">
+            {% for post in category_posts %}
+            <div class="col-md-4 col-sm-6">
+                <div class="blog-post">
+                    <div class="blog-thumb">
+                        <img src="{{ post.image.url }}" alt="" />
+                    </div>
+                    <div class="blog-content">
+                        <div class="content-show">
+                            <h4><a href="{% url 'post_detail' post.slug  %}">{{ post.title }}</a></h4>
+                            <span>{{ post.created_on}}</span><br>
+                            <span>{{ post.author.first_name }} {{ post.author.last_name }} - 
+                                <a href="{% url 'update_post' post.slug  %}">edit</a><br>
+                                <a href="{% url 'delete_post' post.slug  %}">delete</a>
+                                <a href="{% url 'category' post.category|slugify %}">{{ post.category }}</a>
+                            </span>
+                        </div>
+                        <div class="content-hide">
+                            <p>{{post.content|slice:":200"|safe}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% else %}
+	<h2>Sorry no posts from this Category...</h2>
+{% endif %}
+
+{% endblock content %}

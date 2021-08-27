@@ -58,6 +58,7 @@
                             <h4><a href="{% url 'post_detail' post.slug  %}">{{ post.title }}</a></h4>
                             <span>{{ post.created_on}}</span><br>
                             <span>{{ post.author.first_name }} {{ post.author.last_name }} - 
+                                {{ post.category }}
                                 <a href="{% url 'update_post' post.slug  %}">edit</a><br>
                                 <a href="{% url 'delete_post' post.slug  %}">delete</a>
                             </span>

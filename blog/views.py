@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post
+from .models import Post, category
 from .forms import CommentForm, PostForm, EditForm
 from django.views import generic
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
@@ -9,6 +9,13 @@ from django.urls import reverse_lazy, reverse
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
+
+    def get_context_data(self, *args, **kwargs):
+        cat_menu = category.objects.all()
+        context = super(PostList, self).get_context_data(*args, **kwargs)
+        context["cat_menu"] = cat_menu
+        return context
+
 
 def post_detail(request, slug):
     template_name = "post_detail.html"
@@ -62,3 +69,7 @@ class DeletePostView(DeleteView):
 	model = Post
 	template_name = 'delete_post.html'
 	success_url = reverse_lazy('home')
+
+def CategoryView(request, cats):
+	category_posts = Post.objects.filter(category=cats.replace('-', ' '))
+	return render(request, 'categories.html', {'cats':cats.replace('-', ' ').title(), 'category_posts':category_posts})
