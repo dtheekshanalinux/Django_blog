@@ -18,7 +18,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     image = models.ImageField(upload_to='images',null=True, blank=True)
-    category = models.CharField(max_length=50, default='uncatagories')
+    category = models.ForeignKey('blog.category', on_delete=models.SET_NULL, null=True, blank=True)
 
     class Meta:
         ordering = ['-created_on'] # this is used to order blog posts using time
