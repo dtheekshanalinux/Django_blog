@@ -2,10 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, category
 from .forms import CommentForm, PostForm, EditForm
 from django.views import generic
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy, reverse
-from django.http import HttpResponseRedirect
-
+from django.shortcuts import redirect
 
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
@@ -17,22 +16,9 @@ class PostList(generic.ListView):
         context["cat_menu"] = cat_menu
         return context
 
-
 def post_detail(request, slug):
     template_name = "post_detail.html"
     post = get_object_or_404(Post, slug=slug)
-
-    stuff = get_object_or_404(Post, slug=self.kwargs['slug'])
-    total_likes = stuff.total_likes()	
-    
-    liked = False
-    if stuff.likes.filter(slug=self.request.user.id).exists():
-        liked = True
-
-    context["total_likes"] = total_likes
-    context["liked"] = liked
-
-
     comments = post.comments.filter(active=True).order_by("-created_on")
     new_comment = None
     # Comment posted
@@ -51,7 +37,6 @@ def post_detail(request, slug):
 
     return render(
         request,
-        context,
         template_name,
         {
             "post": post,
@@ -87,16 +72,3 @@ class DeletePostView(DeleteView):
 def CategoryView(request, cats):
 	category_posts = Post.objects.filter(category__name=cats.replace('-', ' '))
 	return render(request, 'categories.html', {'cats':cats.replace('-', ' '), 'category_posts':category_posts})
-
-
-def LikeView(request, slug):
-	post = get_object_or_404(Post, slug=request.POST.get('post_id'))
-	liked = False
-	if post.likes.filter(id=request.user.id).exists():
-		post.likes.remove(request.user)
-		liked = False
-	else:
-		post.likes.add(request.user)
-		liked = True
-	
-    return HttpResponseRedirect(reverse('post_detail', args='slug': self.slug))

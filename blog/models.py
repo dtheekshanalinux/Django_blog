@@ -19,10 +19,6 @@ class Post(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     image = models.ImageField(upload_to='images',null=True, blank=True)
     category = models.ForeignKey('blog.category', on_delete=models.SET_NULL, null=True, blank=True)
-    likes = models.ManyToManyField(User, related_name='blog_Post')
-
-    def total_likes(self):
-        return self.likes.count()
 
     class Meta:
         ordering = ['-created_on'] # this is used to order blog posts using time
