@@ -19,3 +19,7 @@
 ### Create super user(if you only need acces admin panel)
 > python manage.py createsuperuser
 > [django docs](https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user)
+### some images of home pages
+![images of home page](https://github.com/dtheekshanalinux/Django_blog/blob/main/home1.png)
+![images of home page](https://github.com/dtheekshanalinux/Django_blog/blob/main/home2.png)
+![images of home page](https://github.com/dtheekshanalinux/Django_blog/blob/main/home3.png)
